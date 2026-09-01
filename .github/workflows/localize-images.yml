@@ -56,3 +56,4 @@ jobs:
           fi
           git commit -m "Corregir capturas de la landing"
           git push
+# reintento tras habilitar acceso público a la carpeta V3

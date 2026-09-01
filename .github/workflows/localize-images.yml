@@ -13,16 +13,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Download screenshots and update HTML
+      - name: Install downloader
+        run: python -m pip install --quiet gdown
+      - name: Download and validate screenshots
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p assets
           download() {
             id="$1"; out="$2"
-            url="https://drive.usercontent.google.com/download?id=${id}&export=download&confirm=t"
-            curl -L --fail --retry 3 --retry-delay 2 "$url" -o "$out"
-            test "$(wc -c < "$out")" -gt 1000
+            python -m gdown "https://drive.google.com/uc?id=${id}" -O "$out"
+            python - "$out" <<'PY'
+          import sys
+          from pathlib import Path
+          p=Path(sys.argv[1])
+          b=p.read_bytes()
+          if not b.startswith(b'\x89PNG\r\n\x1a\n'):
+              raise SystemExit(f'{p} no es un PNG real; primeros bytes={b[:20]!r}')
+          print(p, len(b), 'bytes PNG OK')
+          PY
           }
           download 1EzdptjpJIKEnlJTBWQ6KMpdJuz8NxSqU assets/dashboard.png
           download 1haguQ08o1fR83z5BmS-RiDIGTTsHKust assets/carga-voz.png
@@ -34,31 +43,16 @@ jobs:
           download 1aUaHW68iQLlucvJvAeZYytIDjTxMJiiF assets/evolucion.png
           download 1se7vyToLObCMxolreav_j8ciHKTKCJrW assets/pacientes.png
           download 1ZUKB4VBDBff9t7sSUdUTi7rdfu4_5znG assets/reporte-atenciones.png
-          python - <<'PY'
-          from pathlib import Path
-          p=Path('index.html')
-          s=p.read_text(encoding='utf-8')
-          mapping={
-          '1EzdptjpJIKEnlJTBWQ6KMpdJuz8NxSqU':'assets/dashboard.png',
-          '1haguQ08o1fR83z5BmS-RiDIGTTsHKust':'assets/carga-voz.png',
-          '1ZJc-dvkBQnFCS2w1qSIMzU7L0hfEKEoz':'assets/carga-organizada.png',
-          '1l3vOvoCWR3YhJLB_x8Rel1ee1gZp7wX1':'assets/consultas.png',
-          '1qwrMK5fSXDUUy0pWIO2qbv8kfIWRbpli':'assets/estudios.png',
-          '1Jglhn1wa2M15XPQCnfNNL32W3CQ82MrD':'assets/laboratorio-importar-1.png',
-          '1VrEA7l9C_8XGh6C4INzQbB4dnBxiKF1X':'assets/laboratorio-importar-2.png',
-          '1aUaHW68iQLlucvJvAeZYytIDjTxMJiiF':'assets/evolucion.png',
-          '1se7vyToLObCMxolreav_j8ciHKTKCJrW':'assets/pacientes.png',
-          '1ZUKB4VBDBff9t7sSUdUTi7rdfu4_5znG':'assets/reporte-atenciones.png',
-          }
-          import re
-          for fid, local in mapping.items():
-              s=re.sub(r'https://drive\.google\.com/thumbnail\?id='+re.escape(fid)+r'&sz=w1600', local, s)
-          p.write_text(s, encoding='utf-8')
-          PY
-      - name: Commit localized assets
+      - name: Commit real image files
+        shell: bash
         run: |
+          set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html assets
-          git commit -m "Servir capturas desde el repositorio"
+          git add assets
+          if git diff --cached --quiet; then
+            echo "No changes"
+            exit 0
+          fi
+          git commit -m "Corregir capturas de la landing"
           git push

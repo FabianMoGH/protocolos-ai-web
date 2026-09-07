@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Protocolos AI — Evaluación explicada</title>
+    <meta
+      name="description"
+      content="Protocolos AI compara información clínica y criterios de protocolos para asistir la revisión inicial con resultados explicados y trazables."
+    />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/assets/site.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#contenido">Ir al contenido</a>
+    <header class="topbar">
+      <a class="brand" href="/protocolos/" aria-label="TramaClínicaMed, Protocolos AI">
+        <span class="mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><path d="M3 12h4l2.1-5 4.1 10 2.2-5H21" /></svg>
+        </span>
+        <span class="brand-copy"><small>TramaClínicaMed</small><strong>Protocolos AI</strong></span>
+      </a>
+      <nav class="site-switch" aria-label="Áreas de TramaClínicaMed">
+        <a href="/">Seguimiento Clínico</a>
+        <a href="/protocolos/" aria-current="page">Protocolos AI</a>
+      </nav>
+      <nav class="page-nav" aria-label="En esta página">
+        <a href="#paciente">Paciente</a>
+        <a href="#criterios">Criterios</a>
+        <a href="#resultados">Resultados</a>
+        <a href="#trazabilidad">Trazabilidad</a>
+      </nav>
+    </header>
+
+    <main id="contenido">
+      <div class="wrap">
+        <section class="hero" aria-labelledby="hero-title">
+          <div class="section-copy reveal">
+            <div class="eyebrow">Protocolos AI · evaluación asistida</div>
+            <h1 id="hero-title">Encontrar oportunidades entre pacientes y protocolos, sin revisar todo manualmente.</h1>
+            <p class="lead">Evaluar posibles candidatos para un protocolo clínico implica cruzar mucha información: diagnósticos, antecedentes, medicación, resultados de laboratorio y criterios de inclusión y exclusión.</p>
+            <p class="lead">Protocolos AI organiza esa revisión inicial. Toma los pacientes seleccionados, los compara con los protocolos que se quieren analizar y genera una evaluación explicada para cada combinación.</p>
+            <div class="safety">La IA ayuda a encontrar dónde conviene mirar. La decisión sigue siendo del profesional médico.</div>
+            <div class="highlight-line">Pacientes → protocolos → criterios → resultados explicados</div>
+          </div>
+          <div class="section-visual reveal">
+            <div class="media-frame video-shell">
+              <video autoplay muted loop playsinline preload="metadata">
+                <source src="/assets/protocolos/01-explicacion-general.mp4" type="video/mp4" />
+              </video>
+              <span class="video-status">Explicación general</span>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <section class="story-rail" aria-label="Flujo de Protocolos AI">
+        <div class="wrap">
+          <ol>
+            <li>Paciente</li>
+            <li>Protocolo y criterios</li>
+            <li>IA compara ambos</li>
+            <li>Cumple · Dudoso · No cumple</li>
+            <li>Explicación y trazabilidad</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section" id="preparacion">
+        <div class="wrap section-grid reverse">
+          <div class="section-copy reveal">
+            <div class="eyebrow">Preparación</div>
+            <h2>Uno, varios o todos los tipos de protocolo.</h2>
+            <p>No siempre es necesario analizar toda la base de pacientes contra todos los protocolos disponibles.</p>
+            <p>El profesional puede seleccionar el área que quiere revisar —por ejemplo cardiología, diabetes, obesidad u oftalmología—, combinar varios tipos o incluirlos todos.</p>
+            <p>Antes de ejecutar el proceso, la aplicación permite revisar qué pacientes y protocolos participarán del análisis.</p>
+            <p>Esto permite trabajar sobre un grupo concreto y repetir posteriormente el proceso con otros criterios o protocolos.</p>
+            <div class="highlight-line">Seleccionar → revisar el alcance → iniciar análisis</div>
+          </div>
+          <div class="section-visual reveal">
+            <div class="media-frame video-shell">
+              <video autoplay muted loop playsinline preload="none" data-deferred-video>
+                <source data-src="/assets/protocolos/02-seleccion.mp4" type="video/mp4" />
+              </video>
+              <span class="video-status">Selección del alcance</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-deep" id="paciente">
+        <div class="wrap section-grid">
+          <div class="section-copy reveal">
+            <div class="eyebrow">Paciente · información clínica</div>
+            <h2>La evaluación empieza con lo que ya se sabe.</h2>
+            <p>La información clínica disponible del paciente aporta el contexto necesario para realizar la comparación: diagnósticos, antecedentes, medicación actual, resultados de laboratorio, estudios relevantes y otras observaciones registradas durante el seguimiento.</p>
+            <p>Protocolos AI utiliza esos datos como punto de partida.</p>
+            <p>Si un criterio necesita información que no está disponible, el sistema no la supone: la identifica como faltante para que pueda ser revisada.</p>
+            <div class="highlight-line">Diagnósticos · medicación · laboratorios · antecedentes → contexto del paciente</div>
+          </div>
+          <div class="section-visual reveal">
+            <div class="media-frame">
+              <div class="patient-crop">
+                <img src="/assets/protocolos/paciente-datos-clinicos.png" alt="Secciones Datos clínicos y Medidas de la ficha de un paciente" />
+                <span class="crop-label">Datos clínicos + medidas</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="criterios">
+        <div class="wrap section-grid reverse">
+          <div class="section-copy reveal">
+            <div class="eyebrow">Protocolos · criterios</div>
+            <h2>El protocolo también se puede revisar.</h2>
+            <p>Cada protocolo se incorpora con una configuración concreta: nombre, tipo de protocolo, centro de investigación, sponsor o laboratorio, médico responsable y estado operativo.</p>
+            <p>Pero lo fundamental son sus criterios.</p>
+            <p>Los criterios de inclusión y exclusión quedan visibles dentro de la aplicación y constituyen la base sobre la que se realiza posteriormente la evaluación de cada paciente.</p>
+            <p>La IA no compara al paciente contra una regla invisible. El profesional puede ver qué protocolo se está utilizando y cuáles son los criterios que intervienen en el análisis.</p>
+            <div class="highlight-line">Protocolo → criterios de inclusión + criterios de exclusión → evaluación</div>
+          </div>
+          <div class="section-visual reveal">
+            <div class="protocol-stack" aria-label="Ficha de protocolo y detalle de criterios">
+              <div class="protocol-main">
+                <img loading="lazy" src="/assets/protocolos/protocolo-edicion.png" alt="Ficha editable de un protocolo clínico" />
+                <span class="protocol-tag">Protocolo visible</span>
+              </div>
+              <div class="protocol-focus">
+                <img loading="lazy" src="/assets/protocolos/protocolo-criterios.png" alt="Detalle de criterios de inclusión y exclusión" />
+                <span class="protocol-tag">Inclusión + exclusión</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-deep" id="procesamiento">
+        <div class="wrap section-grid">
+          <div class="section-copy reveal">
+            <div class="eyebrow">Procesamiento · evaluación asistida</div>
+            <h2>Cada paciente. Cada protocolo. Cada criterio.</h2>
+            <p>Una vez definidos ambos lados —la información clínica disponible y los criterios del protocolo— comienza el cruce.</p>
+            <p>Protocolos AI analiza cada combinación paciente–protocolo y revisa los criterios de inclusión, exclusión y los datos necesarios para poder evaluarlos.</p>
+            <p>Cuando existe información suficiente, puede identificar compatibilidades o incompatibilidades.</p>
+            <p>Cuando no la hay, el sistema puede clasificar el resultado como DUDOSO y señalar exactamente qué información falta.</p>
+            <div class="highlight-line">Paciente + protocolo → criterios → evaluación explicada</div>
+          </div>
+          <div class="section-visual reveal">
+            <div class="media-frame video-shell">
+              <video autoplay muted loop playsinline preload="none" data-deferred-video>
+                <source data-src="/assets/protocolos/03-procesamiento.mp4" type="video/mp4" />
+              </video>
+              <span class="video-status">IA cruzando criterios</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="resultados">
+        <div class="wrap section-grid reverse">
+          <div class="section-copy reveal">
+            <div class="eyebrow">Resultados</div>
+            <h2>No sólo dice sí o no. Explica por qué.</h2>
+            <p>Una vez terminado el proceso, cada combinación paciente–protocolo recibe uno de tres estados:</p>
+            <div class="state-row" aria-label="Estados posibles de una evaluación">
+              <div class="state-card ok"><strong>CUMPLE</strong><span>La información disponible es compatible con los criterios evaluados.</span></div>
+              <div class="state-card warn"><strong>DUDOSO</strong><span>Faltan datos, existe ambigüedad o un punto requiere revisión profesional.</span></div>
+              <div class="state-card bad"><strong>NO CUMPLE</strong><span>Uno o más criterios impiden considerar compatible al paciente.</span></div>
+            </div>
+            <p>Pero la etiqueta es sólo el comienzo.</p>
+            <p>La aplicación conserva también el motivo resumido de la evaluación, los datos faltantes y la explicación utilizada para obtener el resultado.</p>
+            <p>Esto permite que el médico no tenga que aceptar una conclusión de la IA a ciegas: puede revisar por qué fue clasificado de esa manera.</p>
+          </div>
+          <div class="section-visual reveal">
+            <div class="media-frame video-shell">
+              <video autoplay muted loop playsinline preload="none" data-deferred-video>
+                <source data-src="/assets/protocolos/04-resultados.mp4" type="video/mp4" />
+              </video>
+              <span class="video-status">Dudoso y cumple</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-deep" id="trazabilidad">
+        <div class="wrap">
+          <div class="section-copy reveal">
+            <div class="eyebrow">Trazabilidad</div>
+            <h2>No alcanza con obtener un resultado. Hay que poder explicar de dónde salió.</h2>
+            <p class="intro-copy">Cada evaluación debe poder reconstruirse. Protocolos AI conserva la información necesaria para saber sobre qué se realizó el análisis.</p>
+          </div>
+          <div class="trace-grid">
+            <article class="trace-card reveal"><span class="trace-number">01</span><h3>Protocolo utilizado</h3><p>Qué protocolo intervino en la evaluación.</p></article>
+            <article class="trace-card reveal"><span class="trace-number">02</span><h3>Versión</h3><p>Qué versión o documento fue utilizado como referencia.</p></article>
+            <article class="trace-card reveal"><span class="trace-number">03</span><h3>Fuente</h3><p>De dónde se obtuvo la información correspondiente al protocolo.</p></article>
+            <article class="trace-card reveal"><span class="trace-number">04</span><h3>Criterios aplicados</h3><p>Qué requisitos de inclusión y exclusión fueron considerados.</p></article>
+            <article class="trace-card reveal"><span class="trace-number">05</span><h3>Resultado y explicación</h3><p>Qué conclusión produjo el análisis y cuál fue su fundamento.</p></article>
+          </div>
+          <div class="highlight-line reveal">Así, el resultado no queda aislado: queda vinculado con aquello que lo originó.</div>
+        </div>
+      </section>
+
+      <section class="section" id="versiones">
+        <div class="wrap">
+          <div class="section-copy reveal">
+            <div class="eyebrow">Versiones y actualización</div>
+            <h2>La evaluación queda asociada a la información utilizada en ese momento.</h2>
+            <p class="intro-copy">Los protocolos clínicos pueden cambiar con el tiempo.</p>
+            <p class="intro-copy">El sistema permite conservar los criterios y metadatos utilizados en cada análisis, junto con su fecha de consulta y fuente, para que una evaluación realizada hoy no pierda su contexto si posteriormente aparece una nueva versión.</p>
+            <p class="intro-copy">Esto permite volver a ejecutar el análisis utilizando información más reciente y mantener la trazabilidad de las evaluaciones anteriores.</p>
+          </div>
+          <div class="versions reveal" aria-label="Secuencia de trazabilidad de una versión">
+            <div class="version-step"><small>Paso 1</small><strong>Versión</strong></div>
+            <div class="version-step"><small>Paso 2</small><strong>Fecha</strong></div>
+            <div class="version-step"><small>Paso 3</small><strong>Fuente</strong></div>
+            <div class="version-step"><small>Paso 4</small><strong>Evaluación</strong></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="closing" id="cierre">
+        <div class="wrap">
+          <div class="closing-box reveal">
+            <div class="eyebrow">Protocolos AI</div>
+            <h2>Un asistente para revisar. No para decidir.</h2>
+            <p>Protocolos AI funciona como herramienta de apoyo para la revisión inicial de pacientes frente a protocolos clínicos.</p>
+            <p>La inteligencia artificial organiza información, compara criterios y genera explicaciones.</p>
+            <p>El profesional conserva el control sobre la interpretación, la confirmación de los datos y cualquier decisión posterior.</p>
+            <div class="closing-quote">Menos revisión manual. Más tiempo para evaluar lo que realmente merece atención.</div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="/assets/site.js" defer></script>
+  </body>
+</html>

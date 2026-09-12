@@ -79,6 +79,10 @@ La prueba de UI intercepta `/api/chat` y devuelve respuestas ficticias. Comprueb
 
 ## Estado y activación pendiente
 
-Implementado y verificable localmente. No se han subido documentos, creado vector stores, generado respuestas reales ni desplegado. Para activar: aprobar la biblioteca y modelo; autorizar `rag:sync`; configurar las tres variables; probar con OpenAI real en Preview; revisar controles de abuso; autorizar por separado el despliegue de Pages. No es necesario modificar Supabase.
+El vector store público fue creado y sincronizado. Contiene los 12 documentos de la biblioteca pública indexados. Responses API y File Search se probaron con consultas reales contra ese store.
+
+Cloudflare Pages tiene un Preview desplegado y validado. La producción continúa pendiente de autorización y de su configuración server-side correspondiente.
+
+Esta versión no se conecta a Supabase, no accede a datos clínicos y no almacena conversaciones en una base de datos.
 
 Referencias técnicas oficiales: [File Search](https://developers.openai.com/api/docs/guides/tools-file-search), [archivos de vector store](https://developers.openai.com/api/reference/resources/vector_stores/subresources/files), [rutas de Pages Functions](https://developers.cloudflare.com/pages/functions/routing/), [variables y secretos](https://developers.cloudflare.com/pages/functions/bindings/), [desarrollo local](https://developers.cloudflare.com/pages/functions/local-development/).

@@ -2,18 +2,20 @@
 
 Sitio estático existente, con un único chat público compartido por los botones **Preguntale al Asistente** del hero y **Asistente TramaClínicaMed** flotante. Está disponible en `/` y `/protocolos/`. Ambos accesos de cada página abren el mismo panel y conversación; cerrar el panel no la borra. Una recarga o navegación a otro documento inicia una conversación nueva. No se usa almacenamiento del navegador ni base de datos.
 
-## Desarrollo y build
+## Desarrollo y verificación
 
 Node >=22.16, npm. No hay framework nuevo ni SDK de OpenAI: se usa fetch server-side. Wrangler es sólo dependencia de desarrollo, fijada con lockfile.
 
 ```sh
 npm ci
 npm test
-npm run build
+npm run check:public
 npm run dev
 ```
 
-`build` copia sólo HTML y assets públicos a `dist`, compila las Functions a `.build/functions` y revisa que el bundle público no contenga claves, variables OpenAI ni referencias a su API. Nunca publicar la raíz completa del repositorio como directorio estático. El directorio de salida de Pages debe ser **dist**, con comando de build **npm run build**. La carpeta `functions` se compila por Pages, no se sirve como asset.
+La web conserva la publicación estática de la raíz del repositorio, igual que `main`: no usa Vite, `dist` ni un comando de build de Cloudflare Pages. `check:public` inspecciona los HTML y assets que se sirven desde la raíz y comprueba que no contengan claves, variables OpenAI ni referencias a su API. `npm run dev` es sólo una herramienta local: sirve esa misma raíz con Pages Functions.
+
+Cloudflare Pages detecta `functions/api/chat.js` por enrutado basado en archivos y lo publica como `POST /api/chat`. El archivo raíz `_routes.json` limita la invocación de Functions a esa ruta; todos los demás recursos se sirven como estáticos. La carpeta `functions` no es un asset público.
 
 El proyecto usa JavaScript: no tiene un typecheck de TypeScript. La compilación de Wrangler y `npm test` validan el backend. No hay script de lint.
 
@@ -46,7 +48,7 @@ Primera ejecución: usa el ID configurado; si no existe, recupera el ID del esta
 
 Futuras ejecuciones: compara nombre y SHA-256 en los atributos remotos. Archivos sin cambios no se vuelven a subir. Tras indexar todo correctamente, desvincula del store las versiones anteriores administradas por este script. Rechaza stores con archivos ajenos. No elimina archivos de la cuenta OpenAI porque podrían tener otras referencias: la limpieza de objetos Files antiguos requiere revisión aparte.
 
-`.rag-sync/state.json` guarda únicamente IDs y estado técnico, nunca claves ni conversaciones. Permite reanudar una subida pendiente; está fuera de Git y dist. Un lock impide dos ejecuciones en esta misma carpeta. No ejecutar sincronizadores desde dos máquinas simultáneamente. Si un proceso muere, verificar que terminó antes de retirar el lock huérfano. Ante un timeout ambiguo de subida puede quedar un objeto Files sin asociación; revisar en OpenAI, sin repetir a ciegas. No hay transacción remota: el reemplazo se realiza después de indexar, pero puede existir una breve coexistencia de versiones mientras se sincroniza. Hacer actualizaciones en ventana controlada.
+`.rag-sync/state.json` guarda únicamente IDs y estado técnico, nunca claves ni conversaciones. Permite reanudar una subida pendiente; está fuera de Git y de los archivos estáticos. Un lock impide dos ejecuciones en esta misma carpeta. No ejecutar sincronizadores desde dos máquinas simultáneamente. Si un proceso muere, verificar que terminó antes de retirar el lock huérfano. Ante un timeout ambiguo de subida puede quedar un objeto Files sin asociación; revisar en OpenAI, sin repetir a ciegas. No hay transacción remota: el reemplazo se realiza después de indexar, pero puede existir una breve coexistencia de versiones mientras se sincroniza. Hacer actualizaciones en ventana controlada.
 
 Los errores se informan con estado HTTP o nombre/código de indexación, sin volcar credenciales ni cuerpos de respuesta. Timeout de 60 s por solicitud y 5 min de indexación por archivo. Un fallo no elimina las versiones previas.
 

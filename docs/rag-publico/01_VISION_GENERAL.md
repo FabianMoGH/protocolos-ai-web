@@ -1,7 +1,7 @@
 ---
 documento: TramaClínicaMed — Visión general y propuesta de valor
-version: 1.0
-actualizado: 2026-09-10
+version: 1.1
+actualizado: 2026-09-12
 audiencia: publica
 estado: vigente
 ---
@@ -33,6 +33,8 @@ La IA puede colaborar en tareas como:
 La inteligencia artificial no reemplaza al profesional médico.
 
 La interpretación clínica y las decisiones permanecen bajo responsabilidad del profesional.
+
+TramaClínicaMed es una aplicación web y puede accederse desde un navegador compatible en computadora, tablet o teléfono móvil. La interfaz está diseñada para adaptarse a distintos tamaños de pantalla. La documentación pública no la presenta como una aplicación móvil nativa para Android o iOS.
 
 ### 2. ¿Qué problema intenta resolver?
 

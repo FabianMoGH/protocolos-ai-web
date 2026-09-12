@@ -1,7 +1,7 @@
 ---
 documento: TramaClínicaMed — FAQ pública
-version: 1.0
-actualizado: 2026-09-10
+version: 1.1
+actualizado: 2026-09-12
 audiencia: publica
 estado: vigente
 ---
@@ -30,6 +30,15 @@ Sí.
 
 ### ¿Protocolos AI sirve sólo para centros grandes?
 No, aunque su valor aumenta con la escala.
+
+### ¿Se puede utilizar desde un celular?
+Sí. TramaClínicaMed es una aplicación web y puede accederse desde un navegador compatible en computadora, tablet o teléfono móvil. La interfaz está diseñada para adaptarse a distintos tamaños de pantalla.
+
+### ¿Tiene una aplicación móvil?
+Puede utilizarse desde el navegador del celular. La documentación pública no presenta TramaClínicaMed como una aplicación móvil nativa para Android o iOS.
+
+### ¿Es difícil utilizar el sistema?
+TramaClínicaMed está diseñada para simplificar la organización y revisión de información clínica, utilizando IA como apoyo y manteniendo la revisión profesional. La documentación pública no establece tiempos concretos de capacitación ni permite asegurar cuánto aprendizaje necesitará cada usuario o institución.
 
 ## Seguimiento Clínico
 

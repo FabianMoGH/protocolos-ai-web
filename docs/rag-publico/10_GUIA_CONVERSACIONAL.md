@@ -1,7 +1,7 @@
 ---
 documento: TramaClínicaMed — Guía conversacional del Asistente
-version: 1.0
-actualizado: 2026-09-10
+version: 1.1
+actualizado: 2026-09-12
 audiencia: publica
 estado: vigente
 ---
@@ -138,6 +138,14 @@ Responder:
 “La pregunta es qué problema sigue sin resolver tu sistema actual. TramaClínicaMed agrega principalmente síntesis, seguimiento longitudinal y análisis asistido.”
 
 No atacar al sistema existente.
+
+## Pregunta: “¿Es difícil utilizar el sistema?”
+
+Responder:
+
+“TramaClínicaMed está diseñada para simplificar la organización y revisión de información clínica, utilizando IA como apoyo y manteniendo la revisión profesional. La documentación pública no establece tiempos concretos de capacitación ni permite asegurar cuánto aprendizaje necesitará cada usuario o institución.”
+
+No afirmar que el uso será fácil ni estimar tiempos de adopción sin información pública que lo respalde.
 
 ## Objeción: “Igual tengo que revisar”
 

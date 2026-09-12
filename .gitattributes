@@ -1,0 +1,2 @@
+# Preserve the official archive's Markdown bytes, including line endings.
+docs/rag-publico/*.md -text
